@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
 import {BrowserRouter} from 'react-router-dom'
 import {base} from './base'
-import Main from './Sections/Main'
 
-import '../node_modules/@blueprintjs/core/lib/css/blueprint.css'
-import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css'
-
-import AppContext from './context'
+import CTX from './context'
+import AuthPopup from './Components/AuthPopup'
+import AppRoutes from './AppRoutes'
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +15,6 @@ class App extends Component {
       isAuthenticated: false,
       isAdmin: false,
       categories: {},
-      drinks: {},
       glasses: {},
       ingredients: {},
       listResults: [],
@@ -59,26 +56,25 @@ class App extends Component {
       -------------- Automatically unBinds @unmount ------------  */
 
   componentDidMount() {
-    this.dbSync('drinks')
-    this.dbSync('recipes')
     this.dbSync('ingredients')
     this.dbSync('glasses')
     this.dbSync('categories')
+    this.dbSync('recipes')
     this.dbSync('searchCache')
   }
 
   render() {
     const ctx = {
       ...this.state,
-      setUserState: this.setUserState,
       setAppState: this.setAppState,
+      setUserState: this.setUserState,
     }
     return (
-      <AppContext.Provider value={ctx}>
+      <CTX.Provider value={ctx}>
         <BrowserRouter>
-          <Main />
+          <AppRoutes />
         </BrowserRouter>
-      </AppContext.Provider>
+      </CTX.Provider>
     )
   }
 }

@@ -1,25 +1,50 @@
 {
-  "name": "spirits",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "name": "spirits",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "axios": "^0.18.0",
+        "firebase": "^5.9.3",
+        "history": "^4.9.0",
+        "re-base": "^4.0.0",
+        "react": "^16.8.6",
+        "react-axios": "^2.0.3",
+        "react-dom": "^16.8.6",
+        "react-firebaseui": "^3.1.2",
+        "react-helmet": "^5.2.0",
+        "react-router": "^5.0.0",
+        "react-router-dom": "^5.0.0",
+        "react-scripts": "^2.1.8",
+        "semantic-ui-react": "^0.86.0",
+        "styled-components": "^4.2.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ],
+    "devDependencies": {
+        "@babel/register": "^7.4.0",
+        "@firebase/app-types": "^0.3.7",
+        "@types/react": "^16.8.12",
+        "@types/react-dom": "^16.8.3",
+        "@types/react-router": "^4.4.5",
+        "@types/semantic-ui": "^2.2.7",
+        "@types/styled-components": "^4.1.13",
+        "babel-eslint": "^10.0.1",
+        "eslint": "^5.16.0",
+        "eslint-plugin-env": "^0.0.3",
+        "eslint-plugin-react": "^7.12.4",
+        "eslint-plugin-react-app": "^4.0.1"
+    }
 }
