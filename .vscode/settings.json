@@ -1,9 +1,41 @@
 {
   "files.exclude": {
-    "__error": "Not found",
-    ".git": true,
+    "**/.bit.json": true,
+    "**/.bitmap": true,
+    "**/.DS_Store": true,
+    "**/.env.development.local": true,
+    "**/.env.local": true,
+    "**/.env.production.local": true,
+    "**/.env.test.local": true,
+    "**/.next": true,
+    "**/.pnp.js": true,
+    "**/*.log": true,
+    ".pnp": true,
+    "build": true,
+    "coverage": true,
     "node_modules": true,
-    ".vscode": true
+    "**/logs": true,
+    "**/node_modules": true,
+    "**/npm-debug.log*": true,
+    "**/package-lock.json": true,
+    "**/styles.min.css": true,
+    "**/yarn-debug.log*": true,
+    "**/yarn-error.log*": true,
+    "**/.vscode": true,
+    "**/serviceWorker.js": true,
+    "**/README.md ": true,
+    "**/yarn.lock": true,
+    ".git": true,
+    "src/index.css.map": true,
+    "src/index.css": true,
+    "src/**/.DS_Store": true,
+    "src/**/.DS_Store.*": true
   },
-  "eslint.enable": true
+  "eslint.enable": true,
+  "types-autoinstaller.useYarn": true,
+  "vsprettier.packageManager": "yarn",
+  "vsprettier.useEsLint": true,
+  "jumpToCounterpart.pairs": {
+    ".js": ".styled.js"
+  }
 }

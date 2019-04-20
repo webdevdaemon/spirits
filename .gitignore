@@ -1,3 +1,4 @@
+.vscode
 .bit.json
 .bitmap
 .DS_Store
@@ -17,5 +18,8 @@ node_modules
 npm-debug.log*
 package-lock.json
 styles.min.css
+yarn.lock
 yarn-debug.log*
 yarn-error.log*
+serviceWorker.js
+README.md 

@@ -1,20 +1,25 @@
 import React from 'react'
 import Page from '../Layout/Page'
+import styled from 'styled-components'
 
 // import PropTypes from 'prop-types'
 // const propTypes = { }
 
-function Search(props) {
+const $Settings = styled.div`
+  
+`
+
+function Settings(props) {
   return (
       <Page renderPage={() => {
-
         return (
-          <h1>Search</h1>
+          <h1>Settings</h1>
         )
-      }} />
+      }}/>
   )
 }
 
-// Search.propTypes = propTypes
 
-export default Search
+// Settings.propTypes = propTypes
+
+export default Settings

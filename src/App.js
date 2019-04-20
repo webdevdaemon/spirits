@@ -3,8 +3,33 @@ import {BrowserRouter} from 'react-router-dom'
 import {base} from './base'
 
 import CTX from './context'
-import AuthPopup from './Components/AuthPopup'
-import AppRoutes from './AppRoutes'
+import View from './Components/Layout/View'
+import PageRouter from './PageRouter'
+import Footer from './Components/Layout/Footer'
+import Header from './Components/Layout/Header'
+import ScrollY from './Components/Utilities/ScrollY/ScrollY'
+
+// import styled from 'styled-components'
+
+// const StyledApp = styled.main`
+//   background-image: background: #000000;
+//   background: -webkit-linear-gradient(
+//     to bottom,
+//     #121212,
+//     #000000
+//   );
+//   background: linear-gradient(
+//     to bottom,
+//     #121212,
+//     #000000
+//   );
+
+//   max-height: 100vh;
+//   max-width: 100vw;
+//   height: 100%;
+//   width: 100%;
+//   overflow: hidden;
+// `
 
 class App extends Component {
   constructor(props) {
@@ -25,8 +50,8 @@ class App extends Component {
   }
 
   /* -------------------- Authentication/Account -------------------- */
-  
-  setAppState = next => this.setState(next => ({ ...next }))
+
+  setAppState = next => this.setState(next => ({...next}))
   setUserState = ({user}) => {
     if (!!user) {
       this.setState(() => ({
@@ -37,7 +62,6 @@ class App extends Component {
     }
   }
 
-  
   /* ------------- Sync/Bind to firebase (via re-base) ------------- */
 
   dbSync = endpoint =>
@@ -53,7 +77,7 @@ class App extends Component {
     })
 
   /*  -------------- Bind State to firebase @ Mount --------------
-      -------------- Automatically unBinds @unmount ------------  */
+      -------------- Automatically unBinds @unmount --------------  */
 
   componentDidMount() {
     this.dbSync('ingredients')
@@ -69,12 +93,21 @@ class App extends Component {
       setAppState: this.setAppState,
       setUserState: this.setUserState,
     }
+
     return (
-      <CTX.Provider value={ctx}>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </CTX.Provider>
+      <ScrollY.Setter>
+        <CTX.Provider value={ctx}>
+          <BrowserRouter>
+            <View>
+              <ScrollY.Getter>
+                <Header />
+                <PageRouter />
+                <Footer />
+              </ScrollY.Getter>
+            </View>
+          </BrowserRouter>
+        </CTX.Provider>
+      </ScrollY.Setter>
     )
   }
 }

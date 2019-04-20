@@ -4,17 +4,17 @@ import Page from '../Layout/Page'
 // import PropTypes from 'prop-types'
 // const propTypes = { }
 
-function Search(props) {
+function Tags(props) {
   return (
       <Page renderPage={() => {
 
         return (
-          <h1>Search</h1>
+          <h1>Tags</h1>
         )
       }} />
   )
 }
 
-// Search.propTypes = propTypes
+// Tags.propTypes = propTypes
 
-export default Search
+export default Tags

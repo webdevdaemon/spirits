@@ -1,17 +1,21 @@
 import React from 'react'
-import Page from '../Page'
-
-// import PropTypes from 'prop-types'
-// const propTypes = { }
+import Page from '../Layout/Page'
 
 function Add(props) {
-  return (
-      <Page render={() => {
 
-        return (
-          <h1>Add</h1>
-        )
-      }} />
+  const renderPage = () => (
+    <section attached="top">
+      <h2>Add A Recipe</h2>
+      <form>
+        <input type="text" />
+        <input type="text" />
+        <input type="text" />
+      </form>
+    </section>
+  )
+
+  return (
+    <Page renderPage={() => renderPage(props)} />
   )
 }
 

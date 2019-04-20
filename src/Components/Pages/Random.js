@@ -4,17 +4,17 @@ import Page from '../Layout/Page'
 // import PropTypes from 'prop-types'
 // const propTypes = { }
 
-function Search(props) {
+function Random(props) {
   return (
       <Page renderPage={() => {
 
         return (
-          <h1>Search</h1>
+          <h1>Randomizer</h1>
         )
       }} />
   )
 }
 
-// Search.propTypes = propTypes
+// Random.propTypes = propTypes
 
-export default Search
+export default Random
