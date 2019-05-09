@@ -10,19 +10,28 @@ import {circleLeft} from 'react-icons-kit/icomoon/circleLeft'
 import {priceTags} from 'react-icons-kit/icomoon/priceTags'
 
 // Icon Type Containers (HOCs)
-const HeaderNavIcon = withBaseIcon({size: '5vh', style: {color: '#a5acaf'}})
+const HeaderNavIcon = withBaseIcon({
+  size: '5vh',
+  style: {color: '#a5acaf'},
+})
 const FooterNavIcon = withBaseIcon({
   className: 'nav-link-icon',
   style: {color: '#666666'},
   size: '5vh',
 })
+const InputGroupIcon = withBaseIcon({
+  size: '4vh',
+  style: {color: '#222'},
+})
 
-export const IcoAdd = () => <FooterNavIcon icon={plus}/>
-export const IcoList = () => <FooterNavIcon icon={list2}/>
-export const IcoTags = () => <FooterNavIcon icon={priceTags}/>
-export const IcoRandom = () => <FooterNavIcon icon={dice}/>
-export const IcoSearch = () => <FooterNavIcon icon={search}/>
-export const IcoSettings = () => <FooterNavIcon icon={cogs}/>
+export const IcoAdd = () => <FooterNavIcon icon={plus} />
+export const IcoList = () => <FooterNavIcon icon={list2} />
+export const IcoTags = () => <FooterNavIcon icon={priceTags} />
+export const IcoRandom = () => <FooterNavIcon icon={dice} />
+export const IcoSearch = () => <FooterNavIcon icon={search} />
+export const IcoSettings = () => <FooterNavIcon icon={cogs} />
 
-export const IcoGoBack = () => <HeaderNavIcon icon={circleLeft}/>
-export const IcoAccount = () => <HeaderNavIcon icon={user}/>
+export const IcoGoBack = () => <HeaderNavIcon icon={circleLeft} />
+export const IcoAccount = () => <HeaderNavIcon icon={user} />
+
+export const IcoInputSearch = () => <InputGroupIcon icon={search} />

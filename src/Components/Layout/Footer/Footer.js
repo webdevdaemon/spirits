@@ -4,24 +4,17 @@ import StyledFooter from './Footer.styled.js'
 import Nav from '../../Nav'
 import navLinks from '../../../links'
 
-const Footer = ({ isHidden, ...props }) => {
+const Footer = props => {
   
   return (
-    <StyledFooter isHidden={isHidden} {...props}>
+    <StyledFooter {...props}>
       <Nav navLinks={navLinks}/>
     </StyledFooter>
   )
 }
 
-Footer.propTypes = {
-  isHidden: PropTypes.bool.isRequired,
-}
+Footer.propTypes = { showHUD: PropTypes.bool.isRequired, }
 
-Footer.defaultProps = {
-  isHidden: false,
-}
-
-
-
+Footer.defaultProps = { showHUD: false, }
 
 export default Footer

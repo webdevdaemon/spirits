@@ -7,7 +7,7 @@ function Add(props) {
       <h2>Add A Recipe</h2>
       <form>
         {Array.from({length: 50}).map((a, i) => (
-          <input key={i + ''} style={{ display: 'block' }} type="text" defaultValue={i}/>
+          <p key={i + ''} type="text">{i+""}</p>
         ))}
       </form>
     </>
@@ -15,7 +15,5 @@ function Add(props) {
 
   return <Page renderPage={() => renderPage(props)} />
 }
-
-// Add.propTypes = propTypes
 
 export default Add

@@ -5,15 +5,19 @@ const View = ({children}) => {
   const toggleHUD = () => setShowHUD(!showHUD)
 
   return (
-    <div>
-      {Children.map(children, child => {
-        const nuProps = child.props.scrollable
-          ? {toggleHUD}
-          : {isHidden: !showHUD}
-        return cloneElement(child, nuProps)
-      })}
-    </div>
+    <>{Children.map(children, child => cloneElement(child, {showHUD}))}</>
   )
+
 }
 
 export default View
+
+//- return (
+//-   <>
+//-     {Children.map(children, child => {
+//-       const nuProps =
+//-         child.displayName === 'PageRouter' ? {toggleHUD} : {showHUD}
+//-       return cloneElement(child, nuProps)
+//-     })}
+//-   </>
+//- )

@@ -7,17 +7,17 @@ import BackButton from '../../BackButton'
 import AccountButton from '../../AccountButton'
 import Masthead from '../../Masthead'
 
-const Header = ({isHidden, history, ...props}) => {
+const Header = ({history, ...props}) => {
   return (
-    <StyledHeader isHidden={isHidden} {...props}>
+    <StyledHeader {...props}>
       <div className="header-item left">
-        <BackButton clickHandler={history.goBack}/>
+        <BackButton clickHandler={history.goBack} />
       </div>
       <div className="header-item mid">
-        <Masthead appTitle="spirits"/>
+        <Masthead appTitle="spirits" />
       </div>
       <div className="header-item right">
-        <AccountButton/>
+        <AccountButton />
       </div>
     </StyledHeader>
   )

@@ -1,68 +1,34 @@
 import React, {Component} from 'react'
-import {BrowserRouter} from 'react-router-dom'
 import {base} from './base'
+import {BrowserRouter} from 'react-router-dom'
 
 import CTX from './context'
 import View from './Components/Layout/View'
 import PageRouter from './PageRouter'
 import Footer from './Components/Layout/Footer'
 import Header from './Components/Layout/Header'
-import ScrollY from './Components/Utilities/ScrollY/ScrollY'
 
-// import styled from 'styled-components'
-
-// const StyledApp = styled.main`
-//   background-image: background: #000000;
-//   background: -webkit-linear-gradient(
-//     to bottom,
-//     #121212,
-//     #000000
-//   );
-//   background: linear-gradient(
-//     to bottom,
-//     #121212,
-//     #000000
-//   );
-
-//   max-height: 100vh;
-//   max-width: 100vw;
-//   height: 100%;
-//   width: 100%;
-//   overflow: hidden;
-// `
+import autoComp from './utils/searchModule'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: null,
-      userID: null,
-      isAuthenticated: false,
-      isAdmin: false,
-      categories: {},
       glasses: {},
-      ingredients: {},
-      listResults: [],
       recipes: {},
+      categories: {},
+      ingredients: {},
       searchCache: {},
-      searchCacheRoster: new Set(),
+      searchResults: [],
+      searchCacheRoster: undefined,
     }
   }
-
-  /* -------------------- Authentication/Account -------------------- */
 
   setAppState = next => this.setState(next => ({...next}))
-  setUserState = ({user}) => {
-    if (!!user) {
-      this.setState(() => ({
-        user,
-        isAuthenticated: true,
-        userID: user.providerData.uid,
-      }))
-    }
+  toggleHUD = () => this.setState(st => ({showHUD: !st.showHUD}))
+  handleSearch = query => {
+    this.setState(() => ({searchResults: autoComp(query)}))
   }
-
-  /* ------------- Sync/Bind to firebase (via re-base) ------------- */
 
   dbSync = endpoint =>
     base.syncState(`${endpoint}`, {
@@ -76,9 +42,6 @@ class App extends Component {
       state: `${endpoint}`,
     })
 
-  /*  -------------- Bind State to firebase @ Mount --------------
-      -------------- Automatically unBinds @unmount --------------  */
-
   componentDidMount() {
     this.dbSync('ingredients')
     this.dbSync('glasses')
@@ -88,26 +51,20 @@ class App extends Component {
   }
 
   render() {
-    const ctx = {
-      ...this.state,
-      setAppState: this.setAppState,
-      setUserState: this.setUserState,
-    }
+    const {setAppState, toggleHUD, handleSearch} = this
+    const cb = {setAppState, toggleHUD, handleSearch}
+    const ctx = {cb, ...this.state}
 
     return (
-      <ScrollY.Setter>
+      <BrowserRouter>
         <CTX.Provider value={ctx}>
-          <BrowserRouter>
-            <View>
-              <ScrollY.Getter>
-                <Header />
-                <PageRouter />
-                <Footer />
-              </ScrollY.Getter>
-            </View>
-          </BrowserRouter>
+          <View>
+            <Header />
+            <PageRouter />
+            <Footer />
+          </View>
         </CTX.Provider>
-      </ScrollY.Setter>
+      </BrowserRouter>
     )
   }
 }

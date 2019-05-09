@@ -1,20 +1,18 @@
 import React from 'react'
 import Page from '../Layout/Page'
+import AutoComp from '../AutoComp/AutoComp'
 
-// import PropTypes from 'prop-types'
-// const propTypes = { }
-
-function Search(props) {
+const Search = props => {
   return (
-      <Page renderPage={() => {
-
-        return (
-          <h1>Search</h1>
+    <Page
+      className="page search"
+      renderPage={
+        propsAndContext => (
+          <AutoComp {...propsAndContext} />
         )
-      }} />
+      }
+    />
   )
 }
-
-// Search.propTypes = propTypes
 
 export default Search

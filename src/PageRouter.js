@@ -8,46 +8,48 @@ const Home = lazy(() => import('./Components/Pages/Home'))
 const Search = lazy(() => import('./Components/Pages/Search'))
 const Random = lazy(() => import('./Components/Pages/Random'))
 
-export default () => {
+const PageRouter = ({showHUD, ...props}) => {
   return (
     <Switch>
-      <Suspense fallback={<LoadingScreen/>}>
+      <Suspense fallback={<LoadingScreen />}>
         <Route
           exact
           path="/"
           render={routeProps => {
-            return <Home {...routeProps}/>
+            return <Home showHUD={showHUD} {...props} {...routeProps} />
           }}
         />
 
         <Route
           path="/search"
           render={routeProps => {
-            return <Search {...routeProps}/>
+            return <Search showHUD={showHUD} {...props} {...routeProps} />
           }}
         />
 
         <Route
           path="/tags"
           render={routeProps => {
-            return <Tags {...routeProps}/>
+            return <Tags showHUD={showHUD} {...props} {...routeProps} />
           }}
         />
 
         <Route
           path="/add"
           render={routeProps => {
-            return <Add {...routeProps}/>
+            return <Add showHUD={showHUD} {...props} {...routeProps} />
           }}
         />
 
         <Route
           path="/random"
           render={routeProps => {
-            return <Random {...routeProps}/>
+            return <Random showHUD={showHUD} {...props} {...routeProps} />
           }}
         />
       </Suspense>
     </Switch>
   )
 }
+
+export default PageRouter
