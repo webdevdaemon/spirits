@@ -2,21 +2,18 @@ import React from 'react'
 import Page from '../Layout/Page'
 
 function Add(props) {
-
   const renderPage = () => (
-    <section attached="top">
+    <>
       <h2>Add A Recipe</h2>
       <form>
-        <input type="text" />
-        <input type="text" />
-        <input type="text" />
+        {Array.from({length: 50}).map((a, i) => (
+          <input key={i + ''} style={{ display: 'block' }} type="text" defaultValue={i}/>
+        ))}
       </form>
-    </section>
+    </>
   )
 
-  return (
-    <Page renderPage={() => renderPage(props)} />
-  )
+  return <Page renderPage={() => renderPage(props)} />
 }
 
 // Add.propTypes = propTypes
