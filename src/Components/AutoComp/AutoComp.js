@@ -1,40 +1,45 @@
 import PropTypes from 'prop-types'
-import React, {useState, useContext, useEffect} from 'react'
+import React, { useState, useContext, } from 'react'
 import InputGroup from './InputGroup'
 import Results from './Results'
 import Context from '../../context'
 import autoComp from '../../utils/searchModule'
+
+import Styled from './AutoComp.styled'
 
 const AutoComp = () => {
   const context = useContext(Context)
   const [value, setValue] = useState()
   const [results, setResults] = useState()
 
-  useEffect(() => {
-    const _results = autoComp(value)
-    if (Array.isArray(_results)) {
-      setResults([..._results])
-    } else if (_results instanceof Promise) {
-      _results.then(
-        res => setResults([...res]),
-        err =>
-          console.error(
-            'Culprit: <Autocomp/> -> useEffect -> results (Promise)',
-            err,
-          ),
-      )
-    }
-  }, [value, results, context])
-
   const handleChange = e => {
-    setValue(e.target.value)
+    const {searchCache, setAppState} = context
+    const val = e.target.value
+    setValue(val)
+
+    if (searchCache.hasOwnProperty(val)) {
+      setResults(searchCache[val])
+    } else {
+      autoComp(val)
+      .then(r => {
+        setResults(r)
+        setAppState({searchCache: {[val]: r, ...searchCache}})
+        return r
+      })
+      .then()
+        .catch(err => Error(err))
+    }
   }
 
   return (
-    <>
-      <InputGroup value={value} handleChange={handleChange} />
-      <Results results={results} />
-    </>
+    <Styled.AutoComp>
+      <Styled.InputWrapper>
+        <InputGroup value={value} handleChange={handleChange} />
+      </Styled.InputWrapper>
+      <Styled.ResultWrapper>
+        <Results results={results} />
+      </Styled.ResultWrapper>
+    </Styled.AutoComp>
   )
 }
 

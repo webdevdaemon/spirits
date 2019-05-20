@@ -6,8 +6,7 @@ import PropTypes from 'prop-types'
 import Styled from './InputGroup.styled'
 import {IcoSearch} from '../../../icons'
 
-const InputGroup = ({value, handleChange, ...props}) => {
-  console.log('InputGroup: ', {props})
+const InputGroup = ({value, handleChange}) => {
   return (
     <Styled.InputGroup>
       <Styled.Icon>

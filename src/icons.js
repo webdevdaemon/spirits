@@ -20,7 +20,7 @@ const FooterNavIcon = withBaseIcon({
   size: '5vh',
 })
 const InputGroupIcon = withBaseIcon({
-  size: '4vh',
+  size: '3vh',
   style: {color: '#222'},
 })
 

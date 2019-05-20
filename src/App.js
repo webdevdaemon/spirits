@@ -8,8 +8,6 @@ import PageRouter from './PageRouter'
 import Footer from './Components/Layout/Footer'
 import Header from './Components/Layout/Header'
 
-import autoComp from './utils/searchModule'
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -19,16 +17,10 @@ class App extends Component {
       categories: {},
       ingredients: {},
       searchCache: {},
-      searchResults: [],
-      searchCacheRoster: undefined,
     }
   }
 
   setAppState = next => this.setState(next => ({...next}))
-  toggleHUD = () => this.setState(st => ({showHUD: !st.showHUD}))
-  handleSearch = query => {
-    this.setState(() => ({searchResults: autoComp(query)}))
-  }
 
   dbSync = endpoint =>
     base.syncState(`${endpoint}`, {
@@ -51,8 +43,8 @@ class App extends Component {
   }
 
   render() {
-    const {setAppState, toggleHUD, handleSearch} = this
-    const cb = {setAppState, toggleHUD, handleSearch}
+    const {setAppState} = this
+    const cb = {setAppState}
     const ctx = {cb, ...this.state}
 
     return (

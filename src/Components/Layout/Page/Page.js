@@ -3,12 +3,12 @@ import React from 'react'
 import CTX from '../../../context'
 import StyledPage from './Page.styled.js'
 
-const Page = ({children, renderPage, showHUD, ...pageProps}) => {
+const Page = ({children, renderPage, ...props}) => {
   return (
     <CTX.Consumer>
       {context => (
-        <StyledPage showHUD={showHUD}>
-          {renderPage ? renderPage({showHUD, ...context}) : children}
+        <StyledPage showHUD={context.showHUD}>
+          {renderPage ? renderPage({...context}) : children}
         </StyledPage>
       )}
     </CTX.Consumer>
@@ -18,7 +18,6 @@ const Page = ({children, renderPage, showHUD, ...pageProps}) => {
 Page.propTypes = {
   children: PropTypes.node,
   renderPage: PropTypes.func.isRequired,
-  showHUD: PropTypes.bool.isRequired,
 }
 
 export default Page
