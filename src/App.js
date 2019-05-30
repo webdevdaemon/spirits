@@ -8,6 +8,12 @@ import PageRouter from './PageRouter'
 import Footer from './Components/Layout/Footer'
 import Header from './Components/Layout/Header'
 
+const ALPHA_REGEX = '/[a-zA-Z]/'
+const alphabetize = str =>
+  ALPHA_REGEX.test(str[0])
+    ? str[0].toLowercase // alpha character
+    : '_' // num or symbol
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -20,7 +26,20 @@ class App extends Component {
     }
   }
 
-  setAppState = next => this.setState(next => ({...next}))
+  setAppState = next => this.setState(() => ({...next}))
+
+  handleCreateIngredient = name => {
+    const catChar = alphabetize(name)
+
+    this.setState(prevSt => {
+      let ingredients = {...prevSt.ingredients}
+      let section = ingredients[catChar]
+
+      section[`${name}`] = true
+      ingredients[`${catChar}`] = section
+      return {ingredients}
+    })
+  }
 
   dbSync = endpoint =>
     base.syncState(`${endpoint}`, {

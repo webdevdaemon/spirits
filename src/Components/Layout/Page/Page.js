@@ -7,8 +7,8 @@ const Page = ({children, renderPage, ...props}) => {
   return (
     <CTX.Consumer>
       {context => (
-        <StyledPage showHUD={context.showHUD}>
-          {renderPage ? renderPage({...context}) : children}
+        <StyledPage showHUD={context.showHUD} >
+          {renderPage ? renderPage({...props, ...context}) : children}
         </StyledPage>
       )}
     </CTX.Consumer>

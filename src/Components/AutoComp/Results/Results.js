@@ -1,6 +1,6 @@
 /**
- * @augments {Component<{ results:any, >}
- */
+* @augments {Component<{results:any, emptyMessage:string>}
+*/
 import PropTypes from 'prop-types'
 import React, {useState} from 'react'
 import Item from '../../Item'
@@ -15,8 +15,8 @@ const Results = ({results, emptyMessage}) => {
         results.length ? (
           results.map((item, i) => (
             <Item
-              clickHandler={(dex) => setActiveIndex(dex)}
-              activeIndex={activeIndex}
+              clickHandler={dex => setActiveIndex(dex)}
+              isActive={activeIndex === i}
               index={i}
               item={item}
               key={i}
@@ -30,7 +30,7 @@ const Results = ({results, emptyMessage}) => {
   )
 }
 
-Results.propTypes = {results: PropTypes.any}
-Results.defaultProps = {results: null}
+Results.propTypes = {results: PropTypes.any, emptyMessage: PropTypes.string}
+Results.defaultProps = {results: null, emptyMessage: ''}
 
 export default Results

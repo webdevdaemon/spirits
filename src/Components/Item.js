@@ -1,52 +1,39 @@
-/**
- * @augments {Component<{  activeIndex:any,  item:any>}
- */
+
 import PropTypes from 'prop-types'
 import React from 'react'
 import TableFrom from './TableFrom'
 
-
-const Item = ({item, index, activeIndex, clickHandler}) => {
-  const renderDetail = ({
-    iba,
-    name,
-    glass,
-    howTo,
-    category,
-    alcoholic,
-    ingredients,
-  }) => {
+const Item = ({item, index, isActive, clickHandler}) => {
+  const renderDetail = ({howTo, ingredients}) => {
     return (
       <>
         <TableFrom entries={ingredients} />
-        <TableFrom entries={[["Mixing Instructions", howTo]]} />
-        <TableFrom entries={
-          Object.entries({ alcoholic, category, iba, glass })} />
+        <p className="how-to">{howTo}</p>
       </>
     )
   }
 
   return (
     <li
-      className={`item${activeIndex === index ? " active" : ""}`}
-      onClick={() => clickHandler(activeIndex !== index ? index : null)}
+      className={`item${isActive ? " active" : ""}`}
+      onClick={() => clickHandler(!isActive ? index : null)}
       style={{backgroundImage: `url(${item.thumbnail})`}}
     >
-      <p>{item.name}</p>
-      <div className="item-detail">
-        {activeIndex === index ? renderDetail(item) : null}
+      <div className="content">
+        <p>{item.name}</p>
+        <div
+          className="item-detail">
+          {isActive ? renderDetail(item) : null}
+        </div>
       </div>
     </li>
   )
 }
 
 Item.propTypes = {
-  activeIndex: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-    PropTypes.number,
-  ]),
-  item: PropTypes.any,
+  index: PropTypes.number,
+  isActive: PropTypes.bool,
+  item: PropTypes.object,
   clickHandler: PropTypes.func,
 }
 

@@ -1,19 +1,20 @@
 import React from 'react'
 import Page from '../Layout/Page'
+import AddForm from '../AddForm/index.js'
 
-function Add(props) {
-  const renderPage = () => (
-    <>
-      <h2>Add A Recipe</h2>
-      <form>
-        {Array.from({length: 50}).map((a, i) => (
-          <p key={i + ''} type="text">{i+""}</p>
-        ))}
-      </form>
-    </>
+import 'react-widgets/dist/css/react-widgets.css'
+
+const Add = () => {
+  return (
+    <Page
+      className="page add"
+      renderPage={
+        propsAndContext => (
+          <AddForm {...propsAndContext} />
+        )
+      }
+    />
   )
-
-  return <Page renderPage={() => renderPage(props)} />
 }
 
 export default Add

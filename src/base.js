@@ -4,12 +4,13 @@ import firebaseui from 'firebaseui'
 
 // Initialize Firebase
 const config = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY, 
-  authDomain: process.env.REACT_APP_FIREBASE_DOMAIN, 
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE, 
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID, 
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET, 
-  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID, 
+  apiKey: "AIzaSyAeEtfyzAnMpQMpjmOoWNSpIr-1OmNnyVc",
+  authDomain: "cmorganwebdev-barbacker.firebaseapp.com",
+  databaseURL: "https://cmorganwebdev-barbacker.firebaseio.com",
+  projectId: "cmorganwebdev-barbacker",
+  storageBucket: "cmorganwebdev-barbacker.appspot.com",
+  messagingSenderId: "62113307786",
+  appId: "1:62113307786:web:c4f14569e5961f87"
 }
 
 const uiConfig = {

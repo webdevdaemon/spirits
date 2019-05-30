@@ -2,12 +2,15 @@
   "name": "spirits",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "8.16.0"
+  },
   "dependencies": {
     "axios": "^0.18.0",
-    "bulma": "^0.7.4",
-    "firebase": "^5.9.3",
+    "firebase": "^6.0.4",
+    "grpc": "1.6.6",
     "history": "^4.9.0",
-    "re-base": "^3.1.0",
+    "re-base": "3.2.1",
     "react": "^16.8.6",
     "react-axios": "^2.0.3",
     "react-dom": "^16.8.6",
@@ -17,6 +20,7 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^2.1.8",
+    "react-widgets": "^4.4.11",
     "styled-components": "^4.2.0",
     "styled-system": "^4.1.0"
   },
@@ -35,6 +39,10 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "peerDependencies": {
+    "firebase": "5.9.3",
+    "re-base": "3.2.1"
+  },
   "devDependencies": {
     "@babel/register": "^7.4.0",
     "@firebase/app-types": "^0.3.7",

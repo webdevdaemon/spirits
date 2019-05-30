@@ -1,18 +1,25 @@
 /**
-* @augments {Component<{  handleChange:Function.isRequired,  value:string.isRequired,>}
-*/
+ * @augments {Component<{  handleChange:Function.isRequired,  value:string.isRequired,>}
+ */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from './InputGroup.styled'
 import {IcoSearch} from '../../../icons'
 
 const InputGroup = ({value, handleChange}) => {
+  const Input = props => <input {...props} />
+
   return (
     <Styled.InputGroup>
       <Styled.Icon>
         <IcoSearch />
       </Styled.Icon>
-      <Styled.Input value={value} onChange={e => handleChange(e)} />
+      <Input
+        autoFocus
+        value={value}
+        className="input"
+        onChange={e => handleChange(e)}
+      />
     </Styled.InputGroup>
   )
 }
@@ -23,7 +30,7 @@ InputGroup.propTypes = {
 }
 
 InputGroup.defaultProps = {
-  value: ''
+  value: '',
 }
 
 export default InputGroup

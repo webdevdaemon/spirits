@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useState, useContext, } from 'react'
+import React, {useState, useContext} from 'react'
 import InputGroup from './InputGroup'
 import Results from './Results'
 import Context from '../../context'
@@ -21,12 +21,13 @@ const AutoComp = () => {
       setResults(searchCache[val])
     } else {
       autoComp(val)
-      .then(r => {
-        setResults(r)
-        setAppState({searchCache: {[val]: r, ...searchCache}})
-        return r
-      })
-      .then()
+        .then(r => {
+          setResults(r)
+          return r
+        })
+        .then(r => {
+          setAppState({searchCache: {[val]: r, ...searchCache}})
+        })
         .catch(err => Error(err))
     }
   }
@@ -37,7 +38,7 @@ const AutoComp = () => {
         <InputGroup value={value} handleChange={handleChange} />
       </Styled.InputWrapper>
       <Styled.ResultWrapper>
-        <Results results={results} />
+        <Results results={value !== "" ? results : null} emptyMessage="No Matching Recipes..." />
       </Styled.ResultWrapper>
     </Styled.AutoComp>
   )

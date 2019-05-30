@@ -4,24 +4,15 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const TableFrom = ({ entries }) => {
+const TableFrom = ({entries}) => {
 
   return (
-    <div
-      className="table-from-object"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignTableFroms: 'stretch',
-        justifyContent: 'flex-start',
-        width: '100%',
-      }}
-    >
+    <div className="table-from">
       {entries.length ? (
         entries.map(([key, value], i) => (
-          <div key={key+i} style={{display: 'flex', justifyContent: 'space-between'}}>
-            <span style={{width: '50%', textAlign: 'left'}}>{key + ':'}</span>
-            <span style={{width: '50%', textAlign: 'right'}}>{value}</span>
+          <div className="entry" key={key + i}>
+            <span className="key">{key + ':'}</span>
+            <span className="value">{/\w/.test(value) ? value : '1 part'}</span>
           </div>
         ))
       ) : (
@@ -36,7 +27,7 @@ TableFrom.propTypes = {
 }
 
 TableFrom.defaultProps = {
-  entries: null
+  entries: null,
 }
 
 export default TableFrom
