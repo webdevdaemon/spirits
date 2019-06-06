@@ -8,9 +8,9 @@ import PageRouter from './PageRouter'
 import Footer from './Components/Layout/Footer'
 import Header from './Components/Layout/Header'
 
-const ALPHA_REGEX = '/[a-zA-Z]/'
-const alphabetize = str =>
-  ALPHA_REGEX.test(str[0])
+const ALPHA_REGEX = '/[a-z]gi/'
+const entriesize = str =>
+  str[0].match(ALPHA_REGEX)
     ? str[0].toLowercase // alpha character
     : '_' // num or symbol
 
@@ -18,27 +18,37 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      tags: {},
       glasses: {},
       recipes: {},
       categories: {},
-      ingredients: {},
+      ingredients: [],
       searchCache: {},
     }
   }
 
-  setAppState = next => this.setState(() => ({...next}))
+  setAppState = next => {
+    this.setState(
+      () => ({...next}),
+      () => console.log('GLOBAL APP STATE UPDATED:\n\n', next),
+    )
+  }
 
   handleCreateIngredient = name => {
-    const catChar = alphabetize(name)
-
-    this.setState(prevSt => {
-      let ingredients = {...prevSt.ingredients}
-      let section = ingredients[catChar]
-
-      section[`${name}`] = true
-      ingredients[`${catChar}`] = section
-      return {ingredients}
-    })
+    const char = entriesize(name)
+    this.setState(
+      ({ingredients}) => {
+        console.time('updateIngredients')
+        ingredients = ingredients.concat([
+          {name, char}
+        ])
+        return {ingredients}
+      },
+      () => {
+        console.log('updated')
+        console.timeEnd('updateIngredients')
+      },
+    )
   }
 
   dbSync = endpoint =>
@@ -54,6 +64,7 @@ class App extends Component {
     })
 
   componentDidMount() {
+    this.dbSync('tags')
     this.dbSync('ingredients')
     this.dbSync('glasses')
     this.dbSync('categories')
@@ -62,9 +73,8 @@ class App extends Component {
   }
 
   render() {
-    const {setAppState} = this
-    const cb = {setAppState}
-    const ctx = {cb, ...this.state}
+    const {setAppState, handleCreateIngredient} = this
+    const ctx = {setAppState, handleCreateIngredient, ...this.state}
 
     return (
       <BrowserRouter>
