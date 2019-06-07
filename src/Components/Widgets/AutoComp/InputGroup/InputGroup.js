@@ -4,7 +4,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from './InputGroup.styled'
-import {IcoSearch} from '../../../icons'
+import {IcoSearch} from '../../../../icons'
 
 const InputGroup = ({value, handleChange}) => {
   const Input = props => <input {...props} />

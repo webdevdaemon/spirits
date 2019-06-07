@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import React, {useState, useContext} from 'react'
 import InputGroup from './InputGroup'
 import Results from './Results'
-import Context from '../../context'
-import autoComp from '../../utils/searchModule'
+import Context from '../../../context'
+import autoComp from '../../../utils/searchModule'
 
 import Styled from './AutoComp.styled'
 

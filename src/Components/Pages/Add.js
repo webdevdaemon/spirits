@@ -1,6 +1,6 @@
 import React from 'react'
 import Page from '../Layout/Page'
-import AddForm from '../AddForm/index.js'
+import AddForm from '../Widgets/AddForm'
 
 import 'react-widgets/dist/css/react-widgets.css'
 

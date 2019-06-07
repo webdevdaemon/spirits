@@ -3,7 +3,7 @@
 */
 import PropTypes from 'prop-types'
 import React, {useState} from 'react'
-import Item from '../../Item'
+import Item from '../../../Item'
 import Styled from './Results.styled'
 
 const Results = ({results, emptyMessage}) => {
