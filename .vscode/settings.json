@@ -2,7 +2,7 @@
   "files.exclude": {
     "**/.bit.json": false,
     "**/.bitmap": false,
-    "**/.DS_Store": false,
+    "**/.DS_Store": true,
     "**/.env.development.local": false,
     "**/.env.local": false,
     "**/.env.production.local": false,
@@ -65,7 +65,8 @@
     "*yarn-error.*": false,
     "*yarn": false,
     "*yarn.*": false,
-    "_node_modules": false
+    "_node_modules": false,
+    "**/.DS_Store.*": true
   },
   "eslint.enable": true,
   "types-autoinstaller.useYarn": true,
