@@ -1,18 +1,14 @@
 import React, {Component} from 'react'
+
 import {base} from './base'
+import {itemize} from './utils/helpers'
 import {BrowserRouter} from 'react-router-dom'
 
 import CTX from './context'
-import View from './Components/Layout/View'
 import PageRouter from './PageRouter'
+import View from './Components/Layout/View'
 import Footer from './Components/Layout/Footer'
 import Header from './Components/Layout/Header'
-
-const ALPHA_REGEX = '/[a-z]gi/'
-const entriesize = str =>
-  str[0].match(ALPHA_REGEX)
-    ? str[0].toLowercase // alpha character
-    : '_' // num or symbol
 
 class App extends Component {
   constructor(props) {
@@ -30,18 +26,19 @@ class App extends Component {
   setAppState = next => {
     this.setState(
       () => ({...next}),
-      () => console.log('GLOBAL APP STATE UPDATED:\n\n', next),
+      () => {
+        console.log('GLOBAL APP STATE UPDATED:')
+        console.log(next)
+      },
     )
   }
 
   handleCreateIngredient = name => {
-    const char = entriesize(name)
+    const char = itemize(name)
     this.setState(
       ({ingredients}) => {
         console.time('updateIngredients')
-        ingredients = ingredients.concat([
-          {name, char}
-        ])
+        ingredients = ingredients.concat([{name, char}])
         return {ingredients}
       },
       () => {
@@ -74,7 +71,11 @@ class App extends Component {
 
   render() {
     const {setAppState, handleCreateIngredient} = this
-    const ctx = {setAppState, handleCreateIngredient, ...this.state}
+    const ctx = {
+      setAppState,
+      handleCreateIngredient,
+      ...this.state,
+    }
 
     return (
       <BrowserRouter>

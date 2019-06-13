@@ -26,7 +26,9 @@ const AutoComp = () => {
           return r
         })
         .then(r => {
-          setAppState({searchCache: {[val]: r, ...searchCache}})
+          setAppState({
+            searchCache: { [val]: {r, ...searchCache} }
+          })
         })
         .catch(err => Error(err))
     }

@@ -5,20 +5,21 @@ import Styled from './AddForm.styled'
 
 const AmountInput = ({count, unit, handleChange}) => (
   <div className="columns is-mobile">
-    <div className="column is-3">
+    <div className="column">
       <input
         onChange={e => handleChange(e.target.value, 1)}
-        className="input is-size-6"
+        style={{width: 'unset'}}
+        className="input"
         value={count}
         type="number"
         max={20}
         min={1}
       />
     </div>
-    <div className="column is-9">
+    <div className="column">
       <select
         onChange={e => handleChange(e.target.value, 2)}
-        className="is-size-4"
+        className="is-size-5 is-size-7-mobile"
         value={unit}
       >
         {MEASUREMENT_UNITS.map((str, i) => (
@@ -30,12 +31,10 @@ const AmountInput = ({count, unit, handleChange}) => (
 )
 
 const SubmitButton = ({handleSubmit}) => (
-  <div className="column">
-    <button
-      onClick={handleSubmit}
-      className="delete is-large ing-sub"
-    />
-  </div>
+  <button
+    onClick={handleSubmit}
+    className="delete is-large ing-sub"
+  />
 )
 
 const RemoveButton = ({handleRemove}) => (
@@ -48,7 +47,7 @@ const RemoveButton = ({handleRemove}) => (
 )
 
 const Ingredients = {
-  SavedList(saved, handleRemove) {
+  SavedList: ({saved, handleRemove}) => {
     return (
       <Styled.SavedIngredientsList>
         {saved.length ? (
@@ -80,54 +79,42 @@ const Ingredients = {
 
   /* ------------------------------------------------- */
 
-  InputGroup({
-    data,
-    saved,
-    values,
-    handleChange,
-    handleRemove,
-    handleSubmit,
-    handleCreate,
-  }) {
+  InputGroup: ({
+    data, values, handleChange, handleSubmit, handleCreate }) => {
     const [name, count, unit] = values
 
     return (
-      <Styled.SubFormWrap>
-        <h3 className="subtitle">Ingredients</h3>
-        <Ingredients.SavedList
-          saved={saved}
-          handleRemove={handleRemove}
-        />
-        <Styled.SubForm>
-          <div className="columns is-gapless is-mobile">
-            <div className="column is-8">
-              <DropdownList
-                onSelect={({name}) => handleChange(name, 0)}
-                onChange={({name}) => handleChange(name, 0)}
-                onCreate={value => handleCreate(value)}
-                placeholder="List Ingredients..."
-                containerClassName="is-size-5"
-                data={data}
-                filter="contains"
-                textField="name"
-                groupBy="char"
-                value={name}
-                allowCreate
-                autoFocus
-                suggest
-              />
-            </div>
-            <div className="column is-4">
-              <AmountInput
-                count={count}
-                unit={unit}
-                handleChange={handleChange}
-              />
-            </div>
+      <Styled.SubForm>
+        <div className="columns is-mobile">
+          <div className="column is-7">
+            <DropdownList
+              onSelect={({name}) => handleChange(name, 0)}
+              onChange={({name}) => handleChange(name, 0)}
+              onCreate={value => handleCreate(value)}
+              placeholder="List Ingredients..."
+              containerClassName="is-size-5"
+              filter="contains"
+              textField="name"
+              groupBy="char"
+              value={name}
+              data={data}
+              allowCreate
+              autoFocus
+              suggest
+            />
+          </div>
+          <div className="column is-4 is-3-mobile">
+            <AmountInput
+              count={count}
+              unit={unit}
+              handleChange={handleChange}
+            />
+          </div>
+          <div className="column is-1 has-text-centered">
             <SubmitButton handleSubmit={handleSubmit} />
           </div>
-        </Styled.SubForm>
-      </Styled.SubFormWrap>
+        </div>
+      </Styled.SubForm>
     )
   },
 }

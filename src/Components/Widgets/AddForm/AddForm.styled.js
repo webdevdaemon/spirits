@@ -11,12 +11,9 @@ const form = {
     width: 100vw;
   `,
   SubForm: styled.div`
-    @media screen and (min-width: 661px) {
-      width: 67%;
-    }
     display: flex;
-    align-items: stretch;
-    justify-content: stretch;
+    align-items: center;
+    justify-content: space-around;
     width: 90%;
     margin: 2vh auto;
     div {
@@ -25,12 +22,14 @@ const form = {
       height: 100%;
     }
     .ing-sub {
+      text-align: right;
       transform: rotateZ(45deg);
       color: azure;
       background-color: green;
+      margin-left: 1vw;
     }
-    .columns .column {
-      margin-right: 6px;
+    .column {
+      padding-left: 1vw;
     }
   `,
   SectionHeader: styled.h3`
@@ -45,12 +44,10 @@ const ingredients = {
   `,
   IngredientSaved: styled.li`
     align-items: center;
-    width: 80%;
+    width: 90%;
     margin: 1vh auto;
     padding: 1vh 1vw;
-    @media screen and (min-width: 661px) {
-      width: 50%;
-    }
+
   `,
 }
 const howTo = {
