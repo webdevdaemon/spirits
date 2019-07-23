@@ -1,7 +1,6 @@
 html {
-  max-height: 100vh;
-  max-width: 100vw;
   min-height: 100vh;
+  max-height: 100vh;
   min-width: 100vw;
   height: 100%;
   width: 100%;
@@ -10,8 +9,7 @@ html {
   list-style: none;
   font-size: 16px;
   outline: none !important;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: auto;
   scroll-behavior: auto;
   -webkit-overflow-scrolling: auto;
   margin: 0 !important;
@@ -25,9 +23,9 @@ html *, html *:before, html *:after {
 }
 
 body {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  overflow: hidden;
+  overflow: scroll;
   margin: 0 !important;
   padding: 0;
   display: -webkit-box;

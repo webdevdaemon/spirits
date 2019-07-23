@@ -1,3 +1,6 @@
+/**
+* @augments {Component<{  showHUD:boolean.isRequired,  toggleHUD:Function.isRequired,  history:object,>}
+*/
 import PropTypes from 'prop-types'
 import React from 'react'
 import {withRouter} from 'react-router'
@@ -23,7 +26,11 @@ const Header = ({history, ...props}) => {
   )
 }
 
-Header.propTypes = {isHidden: PropTypes.bool.isRequired}
-Header.defaultProps = {isHidden: false}
+Header.propTypes = {
+  showHUD: PropTypes.bool.isRequired,
+  toggleHUD: PropTypes.func.isRequired,
+  history: PropTypes.object,
+}
+Header.defaultProps = {}
 
 export default withRouter(Header)

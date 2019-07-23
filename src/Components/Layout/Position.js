@@ -15,7 +15,7 @@ const Position = ({
   bottom,
 }) => {
   const style = {position, zIndex, left, right, top, bottom}
-  const transition = {transition}
+  transition = {transition}
 
   return (
     <div style={{...style, ...transition}}>

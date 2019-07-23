@@ -23,6 +23,16 @@ const InputGroupIcon = withBaseIcon({
   size: '3vh',
   style: {color: '#222'},
 })
+const ControlIcon = withBaseIcon({
+  size: '2.5vh',
+  style: {
+    margin: 'auto',
+    padding: 0,
+    color: 'azure',
+    height: '100%',
+
+  },
+})
 
 export const IcoAdd = () => <FooterNavIcon icon={plus} />
 export const IcoList = () => <FooterNavIcon icon={list2} />
@@ -35,3 +45,5 @@ export const IcoGoBack = () => <HeaderNavIcon icon={circleLeft} />
 export const IcoAccount = () => <HeaderNavIcon icon={user} />
 
 export const IcoInputSearch = () => <InputGroupIcon icon={search} />
+
+export const ControlPlus = () => <ControlIcon icon={plus} />

@@ -10,16 +10,18 @@ import View from './Components/Layout/View'
 import Footer from './Components/Layout/Footer'
 import Header from './Components/Layout/Header'
 
+import './App.css'
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tags: {},
-      glasses: {},
-      recipes: {},
-      categories: {},
       ingredients: [],
       searchCache: {},
+      categories: {},
+      glasses: {},
+      recipes: {},
+      tags: {},
     }
   }
 
@@ -38,8 +40,9 @@ class App extends Component {
     this.setState(
       ({ingredients}) => {
         console.time('updateIngredients')
-        ingredients = ingredients.concat([{name, char}])
-        return {ingredients}
+        const copy = [...ingredients]
+        copy.push({ name, char })
+        return {ingredients: copy}
       },
       () => {
         console.log('updated')
@@ -61,12 +64,12 @@ class App extends Component {
     })
 
   componentDidMount() {
-    this.dbSync('tags')
     this.dbSync('ingredients')
-    this.dbSync('glasses')
-    this.dbSync('categories')
-    this.dbSync('recipes')
     this.dbSync('searchCache')
+    this.dbSync('categories')
+    this.dbSync('glasses')
+    this.dbSync('recipes')
+    this.dbSync('tags')
   }
 
   render() {

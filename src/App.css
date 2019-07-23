@@ -1,17 +1,24 @@
 main {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 10vh;
+  bottom: 20vh;
   left: 0;
   right: 0;
-  overflow: auto;
+  overflow: scroll hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* OVERRIDES */
+
+/* --- cancel AddForm > IngredientInputGroup border radius --- */
+
+/* 
+div.rw-widget-input.rw-widget-picker.rw-widget-container {
+  border-radius: 0 !important;
 }
+
+.field.has-addons .control:first-child:not(:only-child) .input, .field.has-addons .control:last-child:not(:only-child) .button {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+} */

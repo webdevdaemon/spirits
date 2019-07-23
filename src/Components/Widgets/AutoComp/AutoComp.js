@@ -16,7 +16,7 @@ const AutoComp = () => {
     const {searchCache, setAppState} = context
     const val = e.target.value
     setValue(val)
-
+    if (!val.length) setResults([])
     if (searchCache.hasOwnProperty(val)) {
       setResults(searchCache[val])
     } else {
@@ -27,7 +27,9 @@ const AutoComp = () => {
         })
         .then(r => {
           setAppState({
-            searchCache: { [val]: {r, ...searchCache} }
+            searchCache: {
+              [val]: {r, ...searchCache},
+            },
           })
         })
         .catch(err => Error(err))
@@ -40,7 +42,10 @@ const AutoComp = () => {
         <InputGroup value={value} handleChange={handleChange} />
       </Styled.InputWrapper>
       <Styled.ResultWrapper>
-        <Results results={value !== "" ? results : null} emptyMessage="No Matching Recipes..." />
+        <Results
+          results={value !== '' ? results : null}
+          emptyMessage="No Matching Recipes..."
+        />
       </Styled.ResultWrapper>
     </Styled.AutoComp>
   )
