@@ -1,40 +1,43 @@
 import styled from 'styled-components'
-
-const _H = '8vh'
-const _F = '13vh'
+import {HEIGHT as H} from '../../../style-vars'
 
 const Styled = {
   AutoComp: styled.div`
+    /* 100 Vicious Stance: */
+    background-image: linear-gradient(
+      -59deg,
+      #485563 0%,
+      #3a4551 46%,
+      #29323c 100%
+    );
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 100vh;
-    height: auto;
-    margin-bottom: ${_F};
+    height: ${H.content};
     width: 100vw;
+
+    overflow: hidden;
+
+    position: absolute;
+    top: ${H.header};
+    bottom: ${H.footer};
+    left: 0;
+    right: 0;
+    z-index: 100;
   `,
   InputWrapper: styled.div`
     display: block;
-    width: 100vw; 
+    width: 100vw;
     position: sticky;
-    top: 0;
-    margin: ${_H} 0 0 0;
     padding: 0;
     z-index: 1000;
-
-    & {
-      @media screen and (max-width: 650px) {
-        
-      }
-    }
-
-
+    /* & {@media screen and (max-width: 650px) {}} */
   `,
   ResultWrapper: styled.div`
     display: block;
     height: auto;
-    width: 100vw; 
+    width: 100vw;
   `,
 }
 

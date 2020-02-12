@@ -9,34 +9,33 @@ const Styled = {
     align-items: center;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin: 0 0 13vh 0;
+    margin: 0 0 5vh 0;
     padding: 0;
 
     .item {
       background-color: hsl(240, 75%, 33%);
-      background-blend-mode: difference;
       background-repeat: no-repeat;
       background-position: 40% 10%;
-      min-height: 10vh;
-      max-width: 720px;
-      width: 100vw;
+      height: 10vh;
+      width: 70vw;
       padding: 0;
       margin: 0 0 1px 0;
       transition: all 0.7s ease-out;
 
       .content {
         height: auto;
-        min-height: 128px;
+        min-height: 256px;
         transition: all 0.5s ease-out;
 
         p {
           background-color: hsla(0, 0%, 0%, 0.9);
           color: hsl(64, 100%, 97%);
-          font-family: 'Lato', sans-serif;
-          font-size: 8vh;
+          font-family: 'Muli', sans-serif;
+          font-size: 5vh;
           text-transform: uppercase;
-          font-weight: 100;
+          font-weight: 300;
           margin: 0;
+          padding-left: 12px;
         }
 
         .item-detail {
@@ -45,8 +44,10 @@ const Styled = {
         }
       }
 
-      /* ------ () item.active ) ------ */
-
+      /* ACTIVE STATE */
+      
+      /*region*/
+      
       &.active {
         height: auto;
         transition: all 0.5s ease-out;
@@ -99,7 +100,8 @@ const Styled = {
             }
           }
         }
-      }
+      } 
+      /*endregion*/
     }
   `,
 }

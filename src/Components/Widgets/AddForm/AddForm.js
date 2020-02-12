@@ -3,41 +3,39 @@ import Styled from './AddForm.styled.js'
 import Ingredients from './Ingredients.js'
 
 const AddForm = ({ingredients, handleCreateIngredient}) => {
-  // const [ing, setIng] = useState(['', 0, ''])
-  const [ingredientValues, setIngredientValues] = useState([
+  const [currentValues, setCurrentValues] = useState([
     'blah', 1, 'part'
   ])
-  // const [saved, setSaved] = useState([])
   const [savedIngredients, setSavedIngredients] = useState([
     ['blah', 1, 'part' ],
     ['halb', 2, 'slice'],
   ])
 
   const handleIngredientChange = (val, index) => {
-    let arr = [...ingredientValues]
+    let arr = [...currentValues]
     arr[index] = val
-    setIngredientValues(arr)
+    setCurrentValues(arr)
   }
 
   const handleSubmitIngredient = e => {
     if (
-      ingredientValues[0].length &&
-      ingredientValues[1] > 0 &&
-      ingredientValues[2].length
+      currentValues[0].length &&
+      currentValues[1] > 0 &&
+      currentValues[2].length
     ) {
       setSavedIngredients([
         ...savedIngredients,
-        ingredientValues,
+        currentValues,
       ])
-      setIngredientValues(['', 0, ''])
+      setCurrentValues(['', 0, ''])
     } else {
-      if (!ingredientValues[0].length)
+      if (!currentValues[0].length)
         return alert('Please enter a Name!')
-      if (!ingredientValues[1] <= 0)
+      if (!currentValues[1] <= 0)
         return alert('Please enter an Amount!')
       if (
-        !ingredientValues[2].length ||
-        !ingredientValues[2] === '-----'
+        !currentValues[2].length ||
+        !currentValues[2] === '-----'
       )
         return alert('Please Select a Unit of Measurement')
     }
@@ -61,7 +59,7 @@ const AddForm = ({ingredients, handleCreateIngredient}) => {
         <Ingredients.InputGroup
           data={ingredients}
           saved={savedIngredients}
-          values={ingredientValues}
+          values={currentValues}
           handleChange={handleIngredientChange}
           handleRemove={handleRemoveSavedIngredient}
           handleSubmit={handleSubmitIngredient}

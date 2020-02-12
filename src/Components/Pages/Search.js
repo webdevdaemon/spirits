@@ -7,9 +7,7 @@ const Search = props => {
     <Page
       className="page search"
       renderPage={
-        propsAndContext => (
-          <AutoComp {...propsAndContext} />
-        )
+        propsAndContext => <AutoComp {...propsAndContext} />
       }
     />
   )

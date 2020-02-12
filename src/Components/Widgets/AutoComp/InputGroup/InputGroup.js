@@ -1,23 +1,36 @@
 /**
  * @augments {Component<{  handleChange:Function.isRequired,  value:string.isRequired,>}
  */
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import Styled from './InputGroup.styled'
-import {IcoSearch} from '../../../../icons'
 
-const InputGroup = ({value, handleChange}) => {
-  const Input = props => <input {...props} />
+const InputGroup = ({value, handleChange, isLoading}) => {
+  const Input = ({isLoading = true, ...props}) => (
+    <>
+      <input
+        className={`input is-large is-expanded`}
+        placeholder="search"
+        type="text"
+        {...props}
+      />
+      <span className="icon is-left">
+        <i className="fas fa-search"></i>
+      </span>
+    </>
+  )
 
   return (
-    <Styled.InputGroup>
-      <Styled.Icon>
-        <IcoSearch />
-      </Styled.Icon>
+    <Styled.InputGroup
+      className={
+        `control has-icons-left ${isLoading ? 'is-loading' : ''}`
+      }
+    >
       <Input
         autoFocus
         value={value}
-        className="input"
+        className={`input`}
+        placeholder={`search`}
         onChange={e => handleChange(e)}
       />
     </Styled.InputGroup>

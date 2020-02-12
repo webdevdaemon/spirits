@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
-import React, {useState, useContext} from 'react'
-import InputGroup from './InputGroup'
-import Results from './Results'
+import React, {useContext, useState} from 'react'
 import Context from '../../../context'
 import autoComp from '../../../utils/searchModule'
-
 import Styled from './AutoComp.styled'
+import InputGroup from './InputGroup'
+import Results from './Results'
+
 
 const AutoComp = () => {
   const context = useContext(Context)
@@ -16,7 +16,7 @@ const AutoComp = () => {
     const {searchCache, setAppState} = context
     const val = e.target.value
     setValue(val)
-
+    if (!val) return
     if (searchCache.hasOwnProperty(val)) {
       setResults(searchCache[val])
     } else {
@@ -27,7 +27,7 @@ const AutoComp = () => {
         })
         .then(r => {
           setAppState({
-            searchCache: { [val]: {r, ...searchCache} }
+            searchCache: { [val]: r, ...searchCache }
           })
         })
         .catch(err => Error(err))
@@ -40,7 +40,8 @@ const AutoComp = () => {
         <InputGroup value={value} handleChange={handleChange} />
       </Styled.InputWrapper>
       <Styled.ResultWrapper>
-        <Results results={value !== "" ? results : null} emptyMessage="No Matching Recipes..." />
+        <Results
+          results={value ? results : null} emptyMessage="No Matching Recipes..." />
       </Styled.ResultWrapper>
     </Styled.AutoComp>
   )
@@ -51,7 +52,7 @@ AutoComp.propTypes = {
     handleSearch: PropTypes.func,
     setAppState: PropTypes.func,
     toggleHUD: PropTypes.func,
-  }).isRequired,
+  }),
 }
 
 export default AutoComp

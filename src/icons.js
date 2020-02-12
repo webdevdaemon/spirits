@@ -1,13 +1,13 @@
 import React from 'react'
 import {withBaseIcon} from 'react-icons-kit'
-import {dice} from 'react-icons-kit/icomoon/dice'
-import {user} from 'react-icons-kit/icomoon/user'
-import {cogs} from 'react-icons-kit/icomoon/cogs'
-import {plus} from 'react-icons-kit/icomoon/plus'
-import {list2} from 'react-icons-kit/icomoon/list2'
-import {search} from 'react-icons-kit/icomoon/search'
 import {circleLeft} from 'react-icons-kit/icomoon/circleLeft'
+import {cogs} from 'react-icons-kit/icomoon/cogs'
+import {dice} from 'react-icons-kit/icomoon/dice'
+import {list2} from 'react-icons-kit/icomoon/list2'
+import {plus} from 'react-icons-kit/icomoon/plus'
 import {priceTags} from 'react-icons-kit/icomoon/priceTags'
+import {search} from 'react-icons-kit/icomoon/search'
+import {user} from 'react-icons-kit/icomoon/user'
 
 // Icon Type Containers (HOCs)
 const HeaderNavIcon = withBaseIcon({
@@ -20,8 +20,8 @@ const FooterNavIcon = withBaseIcon({
   size: '5vh',
 })
 const InputGroupIcon = withBaseIcon({
-  size: '3vh',
-  style: {color: '#222'},
+  size: '6vh',
+  style: {color: '#222', margin: '1vh auto'},
 })
 
 export const IcoAdd = () => <FooterNavIcon icon={plus} />

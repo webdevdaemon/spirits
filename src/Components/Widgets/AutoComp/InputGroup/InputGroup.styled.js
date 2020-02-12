@@ -1,7 +1,6 @@
 // import React from 'react'
 import styled from 'styled-components'
-
-const _H = '8vh'
+import {HEIGHT as H} from '../../../../style-vars'
 
 const Styled = {
 
@@ -9,10 +8,11 @@ const Styled = {
     background-color: hsla(0, 0%, 100%, 1);
     box-shadow: 0 -2px 1px hsla(0, 0%, 0%, 1);
     display: flex;
-    height: ${_H};
+    height: ${H.header};
     justify-content: flex-start;
+    align-items: stretch;
     overflow: hidden;
-    width: 100%;
+    width: 100vw;
     text-align: left;
 
     input.input {
@@ -20,19 +20,19 @@ const Styled = {
       color: #323232;
       border: none;
       box-shadow: none;
-      font-size: 6vh;
       outline: none;
-      width: 80%; /* important for centering of cursor */
       text-align: center;
-      text-transform: uppercase;
+      text-transform: lowercase;
+      width: 100%;
     }
   `,
 
-  Icon: styled.span`
+  Icon: styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10%;
+    height: ${H.header};
+    width: ${H.header};
   `
 }
 
