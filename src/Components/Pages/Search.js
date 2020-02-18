@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from '../Layout/Page'
+import { Page } from '../Layout'
 import AutoComp from '../Widgets/AutoComp/AutoComp'
 
 const Search = props => {

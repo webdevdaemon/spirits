@@ -1,19 +1,51 @@
 import styled from 'styled-components'
+import {HEIGHT} from '../../../style-vars'
 
 const form = {
   Form: styled.form`
-    margin-top: 10vh;
-    width: 100vw;
-    min-height: 90vh;
+    margin-top: ${HEIGHT.contentMarginTop};
     text-align: center;
+    height: ${HEIGHT.content};
+    width: 100vw;
+    
+    .field.has-addons.ingredient-input {
+      background-color: hsl(0, 0%, 96%);
+      border-radius: 4px;
+      padding: 2.5vh 2.5vw;
+      margin: 0 5vw;
+      
+      overflow: auto;
+      height: auto;
+      
+      .rw-widget>.rw-widget-container {
+        width: 100%;
+        margin: -2px 0;
+      }
+      
+      .control.multi {
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+        .left {
+          display: block;
+          width: 250%;
+          height: 100%;
+        }
+        .right {
+          display: block;
+          width: 75%;
+          height: 100%;
+        }
+      }
+    }
   `,
   SubFormWrap: styled.section`
-    width: 100vw;
+    /* width: 100vw; */
   `,
   SubForm: styled.div`
-    display: flex;
+/*  display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     width: 90%;
     margin: 2vh auto;
     div {
@@ -21,7 +53,7 @@ const form = {
       width: 100%;
       height: 100%;
     }
-    .ing-sub {
+    .submit-ingredient {
       text-align: right;
       transform: rotateZ(45deg);
       color: azure;
@@ -30,7 +62,7 @@ const form = {
     }
     .column {
       padding-left: 1vw;
-    }
+    } */
   `,
   SectionHeader: styled.h3`
     font-weight: bold;
@@ -47,7 +79,6 @@ const ingredients = {
     width: 90%;
     margin: 1vh auto;
     padding: 1vh 1vw;
-
   `,
 }
 const howTo = {

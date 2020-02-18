@@ -15,4 +15,3 @@ const auth = app.auth()
 const db = firestore()
 
 export {auth, db, app}
-

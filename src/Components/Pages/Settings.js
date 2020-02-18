@@ -1,6 +1,6 @@
-import {ErrorMessage, Field, Form, Formik} from 'formik'
-import {default as React, default as React} from 'react'
-import Page from '../Layout/Page'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { default as React, default as React } from 'react'
+import { Page } from '../Layout'
 
 const Settings = ({userData, ...props}) => (
   <Page renderPage={() => (

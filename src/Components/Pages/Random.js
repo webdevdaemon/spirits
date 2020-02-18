@@ -1,17 +1,14 @@
 import React from 'react'
-import Page from '../Layout/Page'
+import {Page} from '../Layout'
 
-// import PropTypes from 'prop-types'
-// const propTypes = { }
-
-function Random(props) {
+const Random = props => {
   return (
-      <Page renderPage={() => {
-
-        return (
-          <h1>Randomizer</h1>
-        )
-      }} />
+    <Page>
+      <h1>Randomizer</h1>
+      <p className="p" isReal cb={x => [x]}>
+        {`(Randomizes Stuff)`}
+      </p>
+    </Page>
   )
 }
 

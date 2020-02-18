@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from '../Layout/Page'
+import { Page } from '../Layout'
 
 // import PropTypes from 'prop-types'
 // const propTypes = { }

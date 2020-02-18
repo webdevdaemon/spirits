@@ -1,6 +1,6 @@
 import React from 'react'
-import Page from '../Layout/Page'
 import styled from 'styled-components'
+import { Page } from '../Layout'
 
 const StyledHome = styled(Page)`
   display: flex;

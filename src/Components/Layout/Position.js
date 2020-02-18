@@ -1,8 +1,8 @@
 /**
  * @augments {Component<{  position:string,  zIndex:oneOf([string,number, ]),   left:oneOf([string,number, ]),   right:oneOf([string,number, ]),   top:oneOf([string,number, ]),   bottom:oneOf([string,number, ]), >}
  */
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 const Position = ({
   children,
@@ -14,11 +14,9 @@ const Position = ({
   top,
   bottom,
 }) => {
-  const style = {position, zIndex, left, right, top, bottom}
-  const transition = {transition}
-
+  const style = {position, zIndex, left, right, top, bottom, transition}
   return (
-    <div style={{...style, ...transition}}>
+    <div style={style}>
       {typeof children === 'function' ? children() : children}
     </div>
   )

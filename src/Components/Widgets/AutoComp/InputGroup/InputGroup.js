@@ -1,6 +1,6 @@
 /**
- * @augments {Component<{  handleChange:Function.isRequired,  value:string.isRequired,>}
- */
+* @augments {Component<{  handleChange:Function.isRequired,  value:string.isRequired,>}
+*/
 import PropTypes from 'prop-types'
 import React from 'react'
 import Styled from './InputGroup.styled'

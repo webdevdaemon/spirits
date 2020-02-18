@@ -4,6 +4,7 @@ import CTX from '../../../context'
 import StyledPage from './Page.styled.js'
 
 const Page = ({children, renderPage, ...props}) => {
+  console.log({'children': children})
   return (
     <CTX.Consumer>
       {context => (

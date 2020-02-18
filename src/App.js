@@ -1,60 +1,34 @@
 import React, {useState} from 'react'
 import {BrowserRouter} from 'react-router-dom'
-import Footer from './Components/Layout/Footer'
-import Header from './Components/Layout/Header'
-import View from './Components/Layout/View'
+import {Footer, Header, View} from './Components/Layout'
 import CTX from './context'
+import {app as a, auth as u, db as d} from './firebase'
 import PageRouter from './PageRouter'
+import {INGREDIENTS} from './utils/db/schemas'
 import {itemize} from './utils/helpers'
 
 const App = () => {
-  const [app, setApp] = useState(app)
-  const [auth, setAuth] = useState(auth)
-  const [db, setDb] = useState(db)
+  const [db, setDb] = useState({...d})
+  const [app, setApp] = useState({...a})
+  const [user, setUser] = useState({...u})
   const [tags, setTags] = useState({})
   const [glasses, setGlasses] = useState({})
   const [recipes, setRecipes] = useState({})
   const [categories, setCategories] = useState({})
-  const [ingredients, setIngredients] = useState([])
+  const [ingredients, setIngredients] = useState(INGREDIENTS)
   const [searchCache, setSearchCache] = useState({})
 
-  //<//TODO//>//
-  // => this...
-  /* const db = {
-    get: {tags, glasses, recipes, categories, ingredients, searchCache},
-    set: {tags, glasses, recipes, categories, ingredients, searchCache},
-  } */
-  // => ...and this...
-  /* const app = {
-    tags, glasses, recipes, categories, ingredients, searchCache
-  } */
-  //>
-
-  const ctx = {db, app}
-
-  const handleCreateIngredient = name => {
-    const char = itemize(name)
+  const handleCreateIngredient = ingredientName => {
+    const char = itemize(ingredientName)
     setIngredients(
       prevIngredients => {
         console.time('updateIngredients')
-        return prevIngredients.concat([{name, char}])
-      },
-      () => {
-        console.log('inredient created: \n', {name, char})
-        console.timeEnd('updateIngredients')
-      },
+        return prevIngredients.concat([{ingredientName, char}])
+      }
     )
   }
 
-  const ctx = {
-    tags,
-    glasses,
-    recipes,
-    categories,
-    ingredients,
-    searchCache,
-    handleCreateIngredient,
-  }
+  const ctx = {db, app, handleCreateIngredient, ingredients}
 
   return (
     <BrowserRouter>

@@ -1,11 +1,13 @@
 const header_height = 10
 const footer_height = 12
 const content_height = 100 - (header_height + footer_height)
+const content_margin_top = header_height * 0.4
 
 const HEIGHT = {
   header: `${header_height}vh`,
   footer: `${footer_height}vh`,
   content: `${content_height}vh`,
+  contentMarginTop: `${content_margin_top}vh`
 }
 const COLOR = {
   uiDark: ` #005051 `,

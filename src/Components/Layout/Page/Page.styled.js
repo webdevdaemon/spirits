@@ -9,7 +9,6 @@ const StyledPage = styled.main`
 	justify-content: flex-start;
 	align-items: center;
   /* Dimensions */
-	min-height: 100vh;
 	height: ${H.content};
 	width: 100vw;
 	overflow: auto;
@@ -19,7 +18,7 @@ const StyledPage = styled.main`
   /* Position/Movement */
 	transition: all .33s ease-out;
 	position: absolute;
-	top: 0; right: 0; bottom: 0; left: 0;
+	top: ${H.header}; right: 0; bottom: auto; left: 0;
 	z-index: ${Z.back};
 `
 export default StyledPage

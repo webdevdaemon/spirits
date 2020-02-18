@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import {INGREDIENTS} from '../../../utils/finite-values.js'
 import Styled from './AddForm.styled.js'
 import Ingredients from './Ingredients.js'
 
+
 const AddForm = ({ingredients, handleCreateIngredient}) => {
   const [currentValues, setCurrentValues] = useState([
-    'blah', 1, 'part'
+    'select one...', 1, 'choose unit...'
   ])
   const [savedIngredients, setSavedIngredients] = useState([
     ['blah', 1, 'part' ],
@@ -48,25 +50,29 @@ const AddForm = ({ingredients, handleCreateIngredient}) => {
   }
 
   return (
-    <Styled.Form>
+    <>
       <h2 className="title">Add A Recipe</h2>
-      <Styled.SubFormWrap>
-        <h3 className="subtitle">Ingredients</h3>
-        <Ingredients.SavedList
-          saved={savedIngredients}
-          handleRemove={handleRemoveSavedIngredient}
-        />
-        <Ingredients.InputGroup
-          data={ingredients}
-          saved={savedIngredients}
-          values={currentValues}
-          handleChange={handleIngredientChange}
-          handleRemove={handleRemoveSavedIngredient}
-          handleSubmit={handleSubmitIngredient}
-          handleCreate={handleCreateIngredient}
-        />
-      </Styled.SubFormWrap>
-    </Styled.Form>
+      <div>
+        <section className="form-section">
+          <h3 className="subtitle">Ingredients</h3>
+          <Ingredients.SavedList
+            saved={savedIngredients}
+            handleRemove={handleRemoveSavedIngredient}
+          />
+          <Styled.Form>
+            <Ingredients.InputGroup
+              data={INGREDIENTS}
+              saved={savedIngredients}
+              values={currentValues}
+              handleChange={handleIngredientChange}
+              handleRemove={handleRemoveSavedIngredient}
+              handleSubmit={handleSubmitIngredient}
+              handleCreateIngredient={handleCreateIngredient}
+            />
+          </Styled.Form>
+        </section>
+      </div>
+    </>
   )
 }
 
