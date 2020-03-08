@@ -21,4 +21,5 @@ const StyledPage = styled.main`
 	top: ${H.header}; right: 0; bottom: auto; left: 0;
 	z-index: ${Z.back};
 `
+
 export default StyledPage

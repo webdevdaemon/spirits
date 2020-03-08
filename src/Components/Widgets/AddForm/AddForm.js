@@ -3,6 +3,7 @@ import {INGREDIENTS} from '../../../utils/finite-values.js'
 import Styled from './AddForm.styled.js'
 import Ingredients from './Ingredients.js'
 
+/*------------------------------------------------------------------*/
 
 const AddForm = ({ingredients, handleCreateIngredient}) => {
   const [currentValues, setCurrentValues] = useState([
@@ -25,10 +26,7 @@ const AddForm = ({ingredients, handleCreateIngredient}) => {
       currentValues[1] > 0 &&
       currentValues[2].length
     ) {
-      setSavedIngredients([
-        ...savedIngredients,
-        currentValues,
-      ])
+      setSavedIngredients([...savedIngredients, currentValues,])
       setCurrentValues(['', 0, ''])
     } else {
       if (!currentValues[0].length)
@@ -41,7 +39,7 @@ const AddForm = ({ingredients, handleCreateIngredient}) => {
       )
         return alert('Please Select a Unit of Measurement')
     }
-  }
+  } 
 
   const handleRemoveSavedIngredient = target => {
     setSavedIngredients(

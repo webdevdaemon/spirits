@@ -30,11 +30,13 @@ const AmountInput = ({count, unit, handleChange}) => (
   </>
 )
 
-const SubmitButton = ({handleSubmit}) => (
+const SubmitButton = ({text, handleSubmit}) => (
   <button
     onClick={handleSubmit}
-    className="delete is-large submit-ingredient"
-  />
+    onSubmit={handleSubmit}
+    className="button is-success">
+    {`${text}`}
+  </button>
 )
 
 const RemoveButton = ({handleRemove}) => (
@@ -42,9 +44,14 @@ const RemoveButton = ({handleRemove}) => (
     <button className="delete is-large" onClick={handleRemove} />
   </div>
 )
+const ListItem = item => (
+  <Styled.ListItem>
+    <p>{item.name}</p>
+  </Styled.ListItem>
+)
 
-const DropdownListComponent = () => {
-  
+const DropdownListComponent = ({data = [], children}) => {
+  return <Styled.ListComponent data={data}>{children}</Styled.ListComponent>
 }
 
 const Ingredients = {
@@ -100,10 +107,7 @@ const Ingredients = {
           <AmountInput handleChange={handleChange} count={count} unit={unit} />
         </div>
         <div className="control">
-          <a className="button is-success" onSubmit={handleSubmit}>
-            save
-            {/* <SubmitButton handleSubmit={handleSubmit} /> */}
-          </a>
+          <SubmitButton text="save" handleSubmit={handleSubmit} />
         </div>
       </div>
     )
