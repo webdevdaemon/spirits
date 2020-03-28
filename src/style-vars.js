@@ -10,7 +10,8 @@ const HEIGHT = {
   contentMarginTop: `${content_margin_top}vh`
 }
 const COLOR = {
-  uiDark: ` #005051 `,
+  uiDark: `#005051`,
+  silver: `#a5acaf`,
 }
 const GRADIENT = {
   darkA: `

@@ -35,33 +35,6 @@ const form = {
       }
     }
   `,
-// /*
-//   SubFormWrap: styled.section`
-//     width: 100vw;
-//   `,
-//   SubForm: styled.div`
-// /*  display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     width: 90%;
-//     margin: 2vh auto;
-//     div {
-//       text-align: left;
-//       width: 100%;
-//       height: 100%;
-//     }
-//     .submit-ingredient {
-//       text-align: right;
-//       transform: rotateZ(45deg);
-//       color: azure;
-//       background-color: green;
-//       margin-left: 1vw;
-//     }
-//     .column {
-//       padding-left: 1vw;
-//     } */
-//   `,
-// */
   SectionHeader: styled.h3`
     font-weight: bold;
     text-align: center;
@@ -94,11 +67,11 @@ const howTo = {
 
 //TODO: 
 const dropdown = {
-  ListComponent: styled.ul`
+  ListComponent: styled.div`
     background-color: hsl(0, 0, 96%);
-    ${GRADIENT.lightA};
-    width: 100vw;
-    height: 75vh;
+    /* ${GRADIENT.lightA}; */
+    width: 90vw;
+    height: 60vh;
     position: absolute;
     top: ${({t}) => t};
     bottom: ${({b}) => b};
@@ -107,9 +80,7 @@ const dropdown = {
     z-index: 9999;
     transition: .5s all ease-out;
   `,
-  ItemComponent: styled(
-    ingredients.IngredientSaved
-  )`
+  ItemComponent: styled(ingredients.IngredientSaved)`
     display: flex;
     align-items: center;
     justify-content: center;

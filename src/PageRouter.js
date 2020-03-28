@@ -1,17 +1,20 @@
 import React, {lazy, Suspense} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import LoadingScreen from './Components/Pages/LoadingScreen'
 
 const Add = lazy(() => import('./Components/Pages/Add'))
-const Tags = lazy(() => import('./Components/Pages/Tags'))
 const Home = lazy(() => import('./Components/Pages/Home'))
-const Search = lazy(() => import('./Components/Pages/Search'))
+const Tags = lazy(() => import('./Components/Pages/Tags'))
+const Login = lazy(() => import('./Components/Pages/Login'))
 const Random = lazy(() => import('./Components/Pages/Random'))
+const Search = lazy(() => import('./Components/Pages/Search'))
+const AuthResult = lazy(() => import('./Components/Pages/AuthResult'))
 
 const PageRouter = ({showHUD, ...props}) => {
   return (
     <Switch>
       <Suspense fallback={<LoadingScreen />}>
+      
         <Route
           exact
           path="/"
@@ -47,6 +50,28 @@ const PageRouter = ({showHUD, ...props}) => {
             return <Random showHUD={showHUD} {...props} {...routeProps} />
           }}
         />
+
+        <Route
+          path="/login"
+          render={routeProps => {
+            return <Login showHUD={showHUD} {...props} {...routeProps} />
+          }}
+        />
+        
+        <Route
+          path="/auth-result"
+          render={routeProps => {
+            return <AuthResult showHUD={showHUD} {...props} {...routeProps} />
+          }}
+        />
+        
+        <Route
+          path="/login"
+          render={routeProps => {
+            return <Login showHUD={showHUD} {...props} {...routeProps} />
+          }}
+        />
+        
       </Suspense>
     </Switch>
   )

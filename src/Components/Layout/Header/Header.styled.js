@@ -13,6 +13,11 @@ const StyledHeader = styled.header`
   right: 0; bottom: auto; left: 0;
   z-index: 100;
   transition: all 0.33s ease-out;
+  
+ .navbar {
+   width: 100vw;
+   
+ } 
 `
 
 export default StyledHeader

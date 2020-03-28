@@ -18,7 +18,8 @@ const StyledPage = styled.main`
   /* Position/Movement */
 	transition: all .33s ease-out;
 	position: absolute;
-	top: ${H.header}; right: 0; bottom: auto; left: 0;
+	top: 0; /* ${H.header}; */
+	right: 0; bottom: auto; left: 0;
 	z-index: ${Z.back};
 `
 

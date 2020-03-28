@@ -1,5 +1,6 @@
 import React from 'react'
 import {withBaseIcon} from 'react-icons-kit'
+import {userCircleO as user} from 'react-icons-kit/fa/userCircleO'
 import {circleLeft} from 'react-icons-kit/icomoon/circleLeft'
 import {cogs} from 'react-icons-kit/icomoon/cogs'
 import {dice} from 'react-icons-kit/icomoon/dice'
@@ -7,16 +8,17 @@ import {list2} from 'react-icons-kit/icomoon/list2'
 import {plus} from 'react-icons-kit/icomoon/plus'
 import {priceTags} from 'react-icons-kit/icomoon/priceTags'
 import {search} from 'react-icons-kit/icomoon/search'
-import {user} from 'react-icons-kit/icomoon/user'
+import {COLOR} from './style-vars'
+// import {user} from 'react-icons-kit/icomoon/user'
 
 // Icon Type Containers (HOCs)
 const HeaderNavIcon = withBaseIcon({
   size: '5vh',
-  style: {color: '#a5acaf'},
+  style: {color: COLOR.silver},
 })
 const FooterNavIcon = withBaseIcon({
   className: 'nav-link-icon',
-  style: {color: '#666666'},
+  style: {color: '#aaaa99'},
   size: '5vh',
 })
 const InputGroupIcon = withBaseIcon({

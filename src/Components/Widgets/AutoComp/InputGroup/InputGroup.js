@@ -10,8 +10,10 @@ const InputGroup = ({value, handleChange, isLoading}) => {
     <>
       <input
         className={`input is-large is-expanded`}
-        placeholder="search"
         type="text"
+        autoFocus
+        value={value}
+        onChange={e => handleChange(e)}
         {...props}
       />
       <span className="icon is-left">
@@ -22,17 +24,16 @@ const InputGroup = ({value, handleChange, isLoading}) => {
 
   return (
     <Styled.InputGroup
-      className={
-        `control has-icons-left ${isLoading ? 'is-loading' : ''}`
-      }
-    >
-      <Input
-        autoFocus
-        value={value}
-        className={`input`}
-        placeholder={`search`}
-        onChange={e => handleChange(e)}
-      />
+      className="field"
+      >
+        <div
+          className={
+            `control has-icons-left is-large
+            ${ isLoading ? 'is-loading' : '' }`
+          }
+        >
+      <Input/>
+        </div>
     </Styled.InputGroup>
   )
 }

@@ -5,14 +5,13 @@ import {StyledFirebaseAuth} from 'react-firebaseui'
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: 'popup',
+  signInSuccessUrl: '/auth-result',
+
   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
   // TODO: Setup SignedIn page
   // TODO: Setup SignedOut page
   // TODO: Setup AuthError page
-  callbacks: {
-      // Avoid redirects after sign-in.
-      signInSuccessWithAuthResult: () => false
-  },
+  callbacks: {},
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
@@ -20,12 +19,8 @@ const uiConfig = {
   ],
 }
 
-const AuthPopup = () => (
-  <div className="login-form">
-    <StyledFirebaseAuth
-      uiConfig={uiConfig}
-      firebaseAuth={firebase.auth()} />
-  </div>
+const AuthPopup = ({auth}) => (
+  <StyledFirebaseAuth firebaseAuth={auth} uiConfig={uiConfig} />
 )
 
 export default AuthPopup

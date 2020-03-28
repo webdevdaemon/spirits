@@ -1,45 +1,33 @@
-import React, {useState} from 'react'
-import {INGREDIENTS} from '../../../utils/finite-values.js'
+import { useFormik } from 'formik'
+import React, { useState } from 'react'
+import { INGREDIENTS } from '../../../utils/finite-values.js'
 import Styled from './AddForm.styled.js'
-import Ingredients from './Ingredients.js'
+import { InputGroup, SavedList } from './Sections/Ingredients'
 
 /*------------------------------------------------------------------*/
 
-const AddForm = ({ingredients, handleCreateIngredient}) => {
-  const [currentValues, setCurrentValues] = useState([
-    'select one...', 1, 'choose unit...'
-  ])
-  const [savedIngredients, setSavedIngredients] = useState([
-    ['blah', 1, 'part' ],
-    ['halb', 2, 'slice'],
-  ])
-
-  const handleIngredientChange = (val, index) => {
-    let arr = [...currentValues]
-    arr[index] = val
-    setCurrentValues(arr)
-  }
-
-  const handleSubmitIngredient = e => {
-    if (
-      currentValues[0].length &&
-      currentValues[1] > 0 &&
-      currentValues[2].length
-    ) {
-      setSavedIngredients([...savedIngredients, currentValues,])
-      setCurrentValues(['', 0, ''])
-    } else {
-      if (!currentValues[0].length)
-        return alert('Please enter a Name!')
-      if (!currentValues[1] <= 0)
-        return alert('Please enter an Amount!')
-      if (
-        !currentValues[2].length ||
-        !currentValues[2] === '-----'
-      )
-        return alert('Please Select a Unit of Measurement')
-    }
-  } 
+const AddForm = ({handleCreateIngredient}) => {
+  
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      count: 1,
+      unit: '',
+    },
+    onSubmit: values => {
+      setSavedIngredients([...savedIngredients, values])
+    },
+  })
+  
+  const [savedIngredients, setSavedIngredients] = useState([{
+      name: 'blah',
+      count: 1,
+      unit: 'part',
+    },{
+      name: 'halb',
+      count: 2,
+      unit: 'slice',
+  }])
 
   const handleRemoveSavedIngredient = target => {
     setSavedIngredients(
@@ -53,18 +41,19 @@ const AddForm = ({ingredients, handleCreateIngredient}) => {
       <div>
         <section className="form-section">
           <h3 className="subtitle">Ingredients</h3>
-          <Ingredients.SavedList
+          <SavedList
             saved={savedIngredients}
             handleRemove={handleRemoveSavedIngredient}
           />
-          <Styled.Form>
-            <Ingredients.InputGroup
+          <Styled.Form onSubmit={formik.handleSubmit}>
+            <InputGroup
+              formik={formik}
               data={INGREDIENTS}
               saved={savedIngredients}
-              values={currentValues}
-              handleChange={handleIngredientChange}
+              values={formik.values}
+              handleChange={formik.handleChange}
               handleRemove={handleRemoveSavedIngredient}
-              handleSubmit={handleSubmitIngredient}
+              handleSubmit={formik.handleSubmit}
               handleCreateIngredient={handleCreateIngredient}
             />
           </Styled.Form>
